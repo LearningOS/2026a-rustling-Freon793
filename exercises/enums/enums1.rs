@@ -7,8 +7,8 @@
 enum Message {
     Quit,
     Echo,
-    Move { x: i32, y: i32 },
-    ChangeColor(u8, u8, u8),
+    Move,
+    ChangeColor,
 }
 
 fn main() {
