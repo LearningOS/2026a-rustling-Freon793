@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2084,
   "repository": "LearningOS/2026a-rustling-Freon793",
-  "commit": "6c3c0242641cdd2e7aade959775a66e19cff43ca",
-  "score": 39,
+  "commit": "ec7ebd008d76c7fe2e18b275f7b37cd7c56ef545",
+  "score": 42,
   "totalScore": 110,
   "exercises": [
     {
@@ -289,23 +289,23 @@
     {
       "name": "modules1",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "modules2",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "modules3",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "hashmaps1",
@@ -778,9 +778,9 @@
     }
   ],
   "student": "Freon793",
-  "runId": "37564976925",
+  "runId": "37780773694",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
