@@ -2,7 +2,6 @@
 	single linked list merge
 	This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
@@ -69,15 +68,59 @@ impl<T> LinkedList<T> {
             },
         }
     }
-	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
-	{
-		//TODO
-		Self {
-            length: 0,
-            start: None,
-            end: None,
+	    pub fn merge(list_a: LinkedList<T>, list_b: LinkedList<T>) -> Self
+    where
+        T: Ord,
+    {
+        let mut result = LinkedList::new();
+
+        // 用两个指针分别遍历两个链表
+        let mut a = list_a.start;
+        let mut b = list_b.start;
+
+        while a.is_some() || b.is_some() {
+            // 取出当前较小的节点
+            let next_node = match (a, b) {
+                (Some(pa), Some(pb)) => unsafe {
+                    if &(*pa.as_ptr()).val <= &(*pb.as_ptr()).val {
+                        a = (*pa.as_ptr()).next;
+                        Some(pa)
+                    } else {
+                        b = (*pb.as_ptr()).next;
+                        Some(pb)
+                    }
+                },
+                (Some(pa), None) => {
+                    a = unsafe { (*pa.as_ptr()).next };
+                    Some(pa)
+                }
+                (None, Some(pb)) => {
+                    b = unsafe { (*pb.as_ptr()).next };
+                    Some(pb)
+                }
+                (None, None) => None,
+            };
+
+            // 把取出的节点接到结果链表尾部
+            if let Some(node) = next_node {
+                unsafe {
+                    (*node.as_ptr()).next = None;
+                }
+
+                match result.end {
+                    None => result.start = Some(node),
+                    Some(end_ptr) => unsafe {
+                        (*end_ptr.as_ptr()).next = Some(node);
+                    },
+                }
+
+                result.end = Some(node);
+                result.length += 1;
+            }
         }
-	}
+
+        result
+    }
 }
 
 impl<T> Display for LinkedList<T>
